@@ -41,7 +41,30 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    [
+      '@nuxtjs/i18n',
+      { /* module options */ }
+    ]
   ],
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: [
+      {
+        code: 'en',
+        file: 'en.js'
+      },
+      {
+        code: 'kh',
+        file: 'kh.js'
+      }
+    ],
+    lazy: true,
+    langDir: 'lang/',
+    defaultLocale: 'en',    
+    skipSettingLocaleOnNavigate: true,
+
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
@@ -49,6 +72,15 @@ export default {
     theme: {
       dark: true,
       themes: {
+        light: {
+          primary: colors.amber.base,
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        },
         dark: {
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,
@@ -59,7 +91,11 @@ export default {
           success: colors.green.accent3
         }
       }
-    }
+    },
+    options: {
+      customProperties: true
+    },
+    treeShake: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
