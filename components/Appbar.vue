@@ -46,6 +46,24 @@
       <v-toolbar-title v-text="title" />
       <v-spacer />
 
+      <v-switch
+        class="pt-5"
+        v-model="$vuetify.theme.dark"
+        inset
+        persistent-hint
+      ></v-switch>
+      <v-btn
+        v-for="locale in availableLocales"
+        :key="locale.code"
+        depressed
+        tile
+        plain
+        class="py-8 hidden-sm-and-down text-capitalize textSize"
+        @click="$i18n.setLocale(locale.code)"
+      >
+        {{ locale.code }}
+      </v-btn>
+
       <v-menu bottom left>
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon color="grey" v-bind="attrs" v-on="on">
@@ -83,7 +101,7 @@
         <Nuxt />
       </v-container>
     </v-main>
-    
+
     <v-navigation-drawer v-model="rightDrawer" app right>
       <v-list>
         <v-list-item @click.native="right = !right">
@@ -120,6 +138,12 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    availableLocales() {
+      console.log(this.$i18n.locales, 'this.$i18n.locales')
+      return this.$i18n.locales.filter((i) => i.code !== this.$i18n.locale)
+    },
   },
   methods: {
     onClickOutsideStandard() {
