@@ -1,7 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawer" fixed app 
-      color="primary">
+    <v-navigation-drawer v-model="drawer" fixed app color="primary">
       <v-row class="pa-5">
         <v-col cols="6">
           <v-row justify="end">
@@ -46,7 +45,7 @@
       <!-- <v-app-bar-nav-icon /> -->
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      
+
       <v-menu bottom left>
         <template v-slot:activator="{ on, attrs }">
           <v-btn icon color="grey" v-bind="attrs" v-on="on">
@@ -79,6 +78,12 @@
       </v-btn>
     </v-app-bar>
 
+    <v-main>
+      <v-container>
+        <Nuxt />
+      </v-container>
+    </v-main>
+    
     <v-navigation-drawer v-model="rightDrawer" app right>
       <v-list>
         <v-list-item @click.native="right = !right">
